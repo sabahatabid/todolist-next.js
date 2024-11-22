@@ -1,10 +1,8 @@
-"use client"; 
+import React, { useState } from 'react';
 
-import React, { useState } from "react";
-
-const ToDoApp: React.FC = () => {
-  const [task, setTask] = useState<string>(""); 
-  const [tasks, setTasks] = useState<string[]>([]); 
+const ToDoApp = () => {
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   const addTask = () => {
     if (task.trim() !== "") {
@@ -13,7 +11,7 @@ const ToDoApp: React.FC = () => {
     }
   };
 
-  const deleteTask = (index: number) => {
+  const deleteTask = (index) => {
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
   };
@@ -27,11 +25,7 @@ const ToDoApp: React.FC = () => {
           placeholder="Enter a task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
-          style={{
-            padding: "5px",
-            marginRight: "5px",
-            width: "200px",
-          }}
+          style={{ padding: "5px", marginRight: "5px", width: "200px" }}
         />
         <button onClick={addTask} style={{ padding: "5px 10px" }}>
           Add Task
@@ -62,6 +56,4 @@ const ToDoApp: React.FC = () => {
   );
 };
 
-export default function Home() {
-  return <ToDoApp />;
-}
+export default ToDoApp;
